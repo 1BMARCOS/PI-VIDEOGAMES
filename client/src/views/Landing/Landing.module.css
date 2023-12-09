@@ -1,0 +1,38 @@
+.body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: url("../../assets/dota2landing.jpg");
+  background-repeat: no-repeat;
+  height: 100vh;
+
+  background-size: cover;
+}
+.LandingPage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+.button {
+  width: 170px;
+  height: 60px;
+  font-size: 18px;
+  background: #e90404;
+  border: none;
+  border-radius: 50px;
+  color: #ffffff;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.4s;
+}
+
+.button:hover {
+  transition: all 0.5s;
+  transform: translate(0, 0.4em);
+  box-shadow: inset 0 0 0 8px #c77121, inset 0 0 0 12px #149b36,
+    inset 0 0 0 16px #118ab2;
+  background: #080808;
+  color: #fafafa;
+}
