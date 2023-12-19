@@ -1,25 +1,37 @@
 import {
     GET_VIDEOGAME_BY_NAME,
+    GET_VIDEOGAMES,
+    // GET_DETAIL,
   } from "../actions/actions";
   
   const initialState = {
-    videogames: [], // pokemons
-    allVideogames: [], // allPokemons
-    allGenres: [], // allTypes
-    genres: [], // types
+    videogames: [], 
+    allVideogames: [], 
+    allGenres: [], 
+    genres: [], 
+    detail: [],
+    allVideogamesCopy: [],
   };
   
   function rootReducer(state = initialState, action) {
     switch (action.type) {
+      case GET_VIDEOGAMES:
+        return {
+          ...state,
+          videogames: action.payload,
+          allVideogames: action.payload,
+          copyAllVideogames: action.payload,
+        };
       case GET_VIDEOGAME_BY_NAME:
-        if (!action.payload.length) {
-          alert("Videogame Not found");
-          return state; 
-        }
         return {
           ...state,
           videogames: action.payload,
         };
+      // case GET_DETAIL:
+      //   return {
+      //     ...state,
+      //     detail: action.payload
+      //   }
       default:
         return state; 
     }

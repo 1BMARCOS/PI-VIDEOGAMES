@@ -1,0 +1,58 @@
+.home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: url("../../assets/metalslugHome.jpg");
+    background-repeat: repeat;
+    height: 100%;
+    background-size:auto;
+  }
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(
+        to left,
+        rgba(7, 27, 82, 1) 0%,
+        rgba(0, 128, 128, 1) 100%
+    );
+    text-align: center;
+}
+
+.components {
+    display: flex;
+    flex-direction: column;
+    margin-top: 75px;
+    margin-bottom: 50px;
+    font-size: 50px;
+    color: aqua;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.home {
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+} */

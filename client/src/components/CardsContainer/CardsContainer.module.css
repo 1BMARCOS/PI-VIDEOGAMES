@@ -1,0 +1,38 @@
+.CardsContainer {
+  width: 85vw;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* .CardsContainer {
+  display: flex;
+  flex-direction: row;
+  width: 80vw;
+  height: 60vh;
+  max-width: 80vw;
+  overflow: scroll;
+  z-index: 10;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 20px;
+} */
