@@ -1,5 +1,7 @@
 const {createVideogameDB} = require ('../../controllers/Videogames/postVideogameControllers')
 const createVideogameHandler = async (req, res)=>{
+  const {input} = req.body
+  console.log(input);
   const {
     name,
     description,
@@ -7,8 +9,8 @@ const createVideogameHandler = async (req, res)=>{
     released,
     rating,
     platforms,
-    genre}
-   = req.body
+    genres}
+   = input
 
   try {
     const response = await createVideogameDB(
@@ -18,7 +20,7 @@ const createVideogameHandler = async (req, res)=>{
       released,
       rating,
       platforms,
-      genre
+      genres
     )
     res.status(200).json(response)
   } catch (error) {

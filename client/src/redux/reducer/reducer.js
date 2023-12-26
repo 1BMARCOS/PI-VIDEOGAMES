@@ -25,13 +25,8 @@ import {
       case GET_VIDEOGAME_BY_NAME:
         return {
           ...state,
-          videogames: action.payload,
+          allVideogames: action.payload,
         };
-      // case GET_DETAIL:
-      //   return {
-      //     ...state,
-      //     detail: action.payload
-      //   }
       default:
         return state; 
     }

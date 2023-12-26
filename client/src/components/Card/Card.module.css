@@ -24,6 +24,23 @@
   object-fit: cover;
 }
 
+.detailsTx {
+display: flex;
+justify-content: center;
+align-items: center;
+width: 70px;
+height: 70px;
+border-radius: 50%;
+background-color: #3498db; /* Puedes cambiar el color de fondo */
+color: #fff; /* Puedes cambiar el color del texto */
+text-decoration: none;
+font-family: Arial, sans-serif;
+font-size: 14px;
+font-weight: bold;
+text-transform: uppercase;
+letter-spacing: 1px;
+transition: background-color 0.3s ease;
+}
 
 
 

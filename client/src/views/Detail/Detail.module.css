@@ -1,0 +1,60 @@
+/* Detail.module.css */
+
+.bodyDetail {
+    background-color: #f0f0f0;
+    padding: 20px;
+    font-family: 'Arial', sans-serif;
+    background: url("../../assets/videogames.jpg");
+  }
+  
+  .nav {
+    margin-bottom: 20px;
+  }
+  
+  .button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .container {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .Card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+  }
+  
+  .loadingGame {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .id, .name {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .genre, .platform, .releaseDate {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 8px;
+  }
+  

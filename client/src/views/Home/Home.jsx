@@ -5,6 +5,7 @@ import SearchBar from "../../components/SearchBar/SearchBar";
 import { useEffect } from "react"; 
 import { useDispatch, useSelector } from "react-redux";
 import {getVideogames, getVideogamesByName } from "../../redux/actions/actions";
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 export default function Home() {
 
@@ -21,27 +22,6 @@ function handleSubmit (e){
   e.preventDefault()
 dispatch (getVideogamesByName(searchString))
 }
-
-
-
-
-// // const copyAllVideogames = useSelector((state)=>state.copyAllVideogames);
-
-// const [filtered, setFiltered] = useState (allVideogames);
-// const [searchString, setSearchString] = useState ("");
-
-// function handleChange (e){
-//   e.preventDefault ()
-//   setSearchString (e.target.value)
-// }
-// function handleSubmit (e){
-//   e.preventDefault ()
-//   const filtered = allVideogames.filter(videogame=>
-//     videogame.name.includes(searchString)
-//   );
-//   setFiltered(filtered)
-// }
-// console.log(copyAllVideogames);
 useEffect (() => {
   dispatch(getVideogames())
 
@@ -49,6 +29,13 @@ useEffect (() => {
 
   return (
     <div className={styles.home}>
+      <div className={styles.nav}>
+        <Link to="/form">
+          <button className={styles.button}>
+            CREAR VIDEOJUEGO
+          </button>
+        </Link>
+      </div>
       <div className={styles.components}>
         <SearchBar handleChange={handleChange} handleSubmit={handleSubmit}  /> 
         <CardsContainer allVideogames = {allVideogames}/>

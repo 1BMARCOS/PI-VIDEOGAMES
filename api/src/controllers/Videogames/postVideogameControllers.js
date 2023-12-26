@@ -1,8 +1,8 @@
-const { Videogame, Genre } = require('../../db');
+const { Videogame, Genre, Videogame_Genre } = require('../../db');
 
 const createVideogameDB = async (name, description, image, released, rating, platforms, genres) => {
   try {
-    // Crear el videojuego en la base de datos
+    
     const createdVideogame = await Videogame.create({
       name,
       description,
@@ -12,13 +12,20 @@ const createVideogameDB = async (name, description, image, released, rating, pla
       platforms,
     });
 
+    if (createdVideogame){
+      await Promise.all(genres.map(async(genres)=>{
+        const genreId = await Genre.findOne({where: {name:genres}})
 
-    if (genres && genres.length > 0) {
-      const genresFromDB = await Genre.findAll({ where: { name: genres } });
-      await createdVideogame.addGenres(genresFromDB);
+        if (genreId){
+          await Videogame_Genre.create({
+            videogameId: createdVideogame.id,
+            genreId: genreId.id
+          })
+        }
+        return createdVideogame;
+      }))
     }
-
-    return createdVideogame;
+    
   } catch (error) {
     throw new Error(`Error al crear el videojuego: ${error.message}`);
   }

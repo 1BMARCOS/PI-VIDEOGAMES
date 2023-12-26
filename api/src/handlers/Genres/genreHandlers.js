@@ -5,7 +5,7 @@ const findAllGenresHandler = async (req, res) => {
     const type = await getGenresApi();
     res.status(201).json(type);
   } catch (error) {
-    return res.status(404).json({ error: error.message });
+    return error.message;
   }
 };
 

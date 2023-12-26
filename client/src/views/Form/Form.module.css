@@ -1,0 +1,65 @@
+/* Formulario principal */
+.formDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: rgb(175, 214, 214);
+  }
+  
+  /* Contenedor del formulario */
+  .form {
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Etiquetas de los campos */
+  .formLabel {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+  }
+  
+  /* Campos de entrada */
+  .form-input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+  }
+  
+  /* Botón de enviar */
+  .formButton {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  /* Mensajes de error */
+  .form-error {
+    color: red;
+    font-size: 14px;
+    margin-top: 4px;
+    display: block;
+  }
+  
+  .formGenres {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 10px;
+  }
+  
+  .genresLabel {
+    margin-right: 10px;
+    margin-bottom: 5px;
+  }
+  
+  .formNewGenre {
+    margin-top: 10px;
+  }
