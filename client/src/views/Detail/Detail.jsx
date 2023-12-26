@@ -11,7 +11,9 @@ import axios from "axios";
 export default function Detail() {
   const { id } = useParams();
   const [gameDetail, setGameDetail] = useState({});
-
+  const divCleaner = document.createElement('div')
+  divCleaner.innerHTML= gameDetail.description;
+  const finalDescription = divCleaner.textContent;
   useEffect(() => {
     const detailData = async () => {
       try {
@@ -27,7 +29,7 @@ export default function Detail() {
 
     return () => setGameDetail({});
   }, [id]);
-
+  // console.log(gameDetail.description);
   return (
     <div className={styles.bodyDetail}>
       <div className={styles.nav}>
@@ -52,7 +54,7 @@ export default function Detail() {
               <p className={styles.platforms}>
                 Plataformas: {gameDetail.platforms}
               </p>
-              <p className={styles.description}>{gameDetail.description}</p>
+              <p className={styles.description}>{finalDescription}</p>
               <p className={styles.releaseDate}>
                 Fecha de lanzamiento: {gameDetail.released}
               </p>

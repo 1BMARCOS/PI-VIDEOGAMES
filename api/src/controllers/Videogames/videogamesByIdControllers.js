@@ -1,6 +1,7 @@
 const { Videogame, Genre } = require('../../db')
 const { getAllVideogames } = require('./videogamesControllers')
-
+const axios = require ('axios')
+const { API_KEY } = process.env;
 const findById = async (id) => {
   console.log("Es de la db");
   const videogame = await Videogame.findOne({ where: { id }, include: Genre });
@@ -9,7 +10,7 @@ const findById = async (id) => {
     const finalGenres = videogame.genres.map((genre) => {
       return genre.name
     })
-    console.log(finalGenres);
+    // console.log(finalGenres);
     const gameFilter = {
       id: videogame.id,
       name: videogame.name,
@@ -28,10 +29,30 @@ const findById = async (id) => {
 const findByIdApi = async (id) => {
   try {
     console.log("es de la api");
-    const videogames = await getAllVideogames();
-    const videogame = videogames.find((v) => v.id == id);
+    const videogames = (await axios(`https://api.rawg.io/api/games/${id}?key=${API_KEY}`))
+    .data;
+    
+    if (videogames) {
 
-    if (videogame) return videogame;
+      const finalVideogames = videogames.genres.map((genres) => {
+        return genres.name
+      })
+      const finalGames = videogames.platforms.map((platforms) => {
+        return platforms.platform.name
+      })
+      console.log(finalVideogames);
+      const gameFilt = {
+        id: videogames.id,
+        name: videogames.name,
+        description: videogames.description,
+        image: videogames.background_image,
+        released: videogames.released,
+        rating: videogames.rating,
+        platforms: finalGames.join(', '),
+        genres: finalVideogames
+      }
+      return gameFilt;
+    }
     else throw new Error("Cannot find Videogame by Id");
   } catch (error) {
 
