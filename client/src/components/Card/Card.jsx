@@ -5,7 +5,6 @@ import React from "react";
 // import { getDetail } from "../../redux/actions/actions";
 
 const Card = ({ videogames }) => {
-  
   const {
     id,
     name,

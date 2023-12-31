@@ -21,16 +21,31 @@ const infoCleaner = (array) => {
   });
 };
 const getAllVideogames = async () => {
+  const only100 = 100; 
+  let allGames = [];
+
+  
+  for (let page = 1; allGames.length < only100; page++) {
+    const videogamesAPI = (
+      await axios.get(`${URL}?key=${API_KEY}&page=${page}`)
+    ).data;
+
+    const gamesApi = infoCleaner(videogamesAPI.results);
+    allGames = [...allGames, ...gamesApi];
+  }
+
+  
+  allGames = allGames.slice(0, only100);
 
   const videogamesDB = await Videogame.findAll({
-    include: Genre
+    include: Genre,
   });
+
   if (videogamesDB) {
-    console.log(videogamesDB);
     const dbGames = videogamesDB.map((game) => {
-      const dbGenre = game.genres.map((game) => {
-        return game.name
-      })
+      const dbGenre = game.genres.map((genre) => {
+        return genre.name;
+      });
       const db = {
         id: game.id,
         name: game.name,
@@ -39,20 +54,13 @@ const getAllVideogames = async () => {
         released: game.released,
         rating: game.rating,
         platforms: game.platforms,
-        genres: dbGenre
-      }
+        genres: dbGenre,
+      };
       return db;
-    })
+    });
 
-    const videogamesAPI = (
-      await axios.get(`${URL}?key=${API_KEY}`)
-    ).data;
-    const gamesApi = infoCleaner(videogamesAPI.results)
-    return [...dbGames, ...gamesApi]
-
+    return [...dbGames, ...allGames];
   }
-
-
 };
 
 const getVideogameByName = async (name) => {
