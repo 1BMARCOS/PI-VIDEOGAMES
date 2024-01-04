@@ -37,7 +37,7 @@ function rootReducer(state = initialState, action) {
       if (action.payload === "all") {
       return {
         ...state,
-        allVideogames: [...state.allVideogames],
+        allVideogames: [...state.copyAllVideogames],
       };
     }
     const allVideogamesGenre = state.videogames.filter((e) =>{
@@ -49,16 +49,18 @@ function rootReducer(state = initialState, action) {
     allVideogames: [...allVideogamesGenre],
 };
     case FILTER_BY_ORIGIN:
+    if (action.payload === "all") {
+      return {
+        ...state,
+        allVideogames: [...state.copyAllVideogames],
+      };
+    }
       let originFiltered;
-
       if (action.payload === "api") {
         originFiltered = state.copyAllVideogames.filter((e) => typeof e.id === "number");
       } else if (action.payload === "db") {
-        originFiltered = state.copyAllVideogames.filter((e) => typeof e.id === "string");
-      } else {
-        originFiltered = state.copyAllVideogames;
-      }
-
+        originFiltered = state.copyAllVideogames.filter((e) => typeof e.id === "string");       
+      } 
       return {
         ...state,
         allVideogames: [...originFiltered],
@@ -97,10 +99,11 @@ function rootReducer(state = initialState, action) {
               return b.rating - a.rating;
             })
           : gamesOrder.sort(function (a, b) {
+            // UNA CONDICIONAL ACÁ PARA SEPARAR RATINGS DE DB - API
               return a.rating - b.rating;
             });
     
-      // Devolver el nuevo estado con la lista ordenada
+      
       return {
         ...state,
         allVideogames: [...videogameOrderResult],
@@ -111,21 +114,3 @@ function rootReducer(state = initialState, action) {
 }
 
 export default rootReducer;
-
-  
-  
-  //en el reducer consume las actions y lo unico que se hace es aceptar dos cosas: state y action las acepta y devuelve una nueva instancia del estado actualizado
-  
-  //el reducer NO CAMBIA NINGUNA PARTE DEL ESTADO, produce una nueva INSTANCIA (ACTUALIZA)
-  
-  //                        ^     ===========> ACTION
-  //                        |       dispatch     |
-  //                        |                    |
-  //                        |                    v
-  //                      VIEW/UI             REDUCERS
-  //                        |                    |
-  //                        |                    |
-  //                        |     subscribe      V
-  //                        |     <==========   STORE
-  //
-  //

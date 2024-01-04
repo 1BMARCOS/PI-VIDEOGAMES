@@ -26,6 +26,7 @@ const Form = () => {
     });
 
     const [allGenres, setAllGenres] = useState([]);
+    const [successMessage, setSuccessMessage] = useState("");
     
 
     useEffect(() => {
@@ -113,6 +114,25 @@ const Form = () => {
             try {
                 const response = await axios.post("http://localhost:3001/videogames", {input});
                 console.log("Respuesta del servidor:", response.data);
+                setSuccessMessage("Videojuego creado satisfactoriamente")
+                setInput({
+                    name: "",
+                    image: "",
+                    description: "",
+                    platforms: "",
+                    released: "",
+                    rating: "",
+                    genres: [],
+                  });
+                setError({
+                    name: "",
+                    image: "",
+                    description: "",
+                    platforms: "",
+                    released: "",
+                    rating: "",
+                    genres: [],
+                  });
             } catch (error) {
                 console.error("Error al enviar el formulario:", error.message);
                 
@@ -120,6 +140,7 @@ const Form = () => {
         } else {
             console.log("Formulario contiene errores. No se enviará.");
         }
+        
     };
     return (
         <div className={styles.formDiv}>
@@ -211,6 +232,9 @@ const Form = () => {
                     <span className={styles.error}>{error.genres}</span>
                     
                     <button type="submit" className={styles.formButton}>Crear videojuego</button>
+                    {successMessage && (
+            <p className={styles.formMessage}>{successMessage}</p>
+        )}
                 </div>
             </form>
         </div>

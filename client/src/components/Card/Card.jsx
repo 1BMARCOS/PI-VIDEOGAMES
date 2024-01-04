@@ -1,9 +1,6 @@
 import { Link } from "react-router-dom";
 import styles from "./Card.module.css";
 import React from "react";
-// import { useDispatch } from "react-redux";
-// import { getDetail } from "../../redux/actions/actions";
-
 const Card = ({ videogames }) => {
   const {
     id,

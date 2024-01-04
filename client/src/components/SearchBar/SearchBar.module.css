@@ -1,8 +1,7 @@
-/* SearchBar.module.css */
-
 .SearchBar {
     text-align: left;
-    margin: 20px;
+    margin: 25px;
+
   }
   
   form {
@@ -12,8 +11,8 @@
   }
   
   input {
-    padding: 8px;
-    margin-right: 5px;
+    padding: 10px;
+    margin-right: 10px;
   }
   
   button {

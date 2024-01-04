@@ -29,7 +29,6 @@ export default function Detail() {
 
     return () => setGameDetail({});
   }, [id]);
-  // console.log(gameDetail.description);
   return (
     <div className={styles.bodyDetail}>
       <div className={styles.nav}>

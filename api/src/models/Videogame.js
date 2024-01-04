@@ -1,5 +1,4 @@
 const { DataTypes } = require('sequelize');
-
 // Exportamos una función que define el modelo
 // Luego le inyectamos la conexión a sequelize.
 module.exports = (sequelize) => {
@@ -17,7 +16,7 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: false,
         unique: true,
-        // Validación de la cantidad de caracteres
+        
       },
       description: {
         type: DataTypes.TEXT,

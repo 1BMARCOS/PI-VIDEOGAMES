@@ -1,4 +1,4 @@
-/* Formulario principal */
+
 .formDiv {
     display: flex;
     justify-content: center;
@@ -7,7 +7,7 @@
     background-color: rgb(175, 214, 214);
   }
   
-  /* Contenedor del formulario */
+  
   .form {
     background-color: #f0f0f0;
     padding: 20px;
@@ -15,14 +15,14 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
   
-  /* Etiquetas de los campos */
+ 
   .formLabel {
     display: block;
     margin-bottom: 8px;
     font-weight: bold;
   }
   
-  /* Campos de entrada */
+  
   .form-input {
     width: 100%;
     padding: 8px;
@@ -30,18 +30,24 @@
     box-sizing: border-box;
   }
   
-  /* Botón de enviar */
+
   .formButton {
     background-color: #007bff;
     color: #fff;
     padding: 10px 15px;
     border: none;
+    margin: 10px;
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
   }
+  .formMessage {
+    color: green;
+    font-size: 16px;
+    margin-top: 10px;
+  }
   
-  /* Mensajes de error */
+  
   .form-error {
     color: red;
     font-size: 14px;

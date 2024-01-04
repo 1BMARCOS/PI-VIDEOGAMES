@@ -4,7 +4,8 @@
   background-color: hwb(160 50% 0%);
   border: 1px solid grey;
   border-radius: 5px;
-  padding: 25px;
+  padding: 15px;
+  margin: 15px;
   cursor: pointer;
   backface-visibility: hidden;
   transform: translateZ(0);

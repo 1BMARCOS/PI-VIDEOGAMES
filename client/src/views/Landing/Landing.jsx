@@ -4,10 +4,7 @@ import styles from "./Landing.module.css";
 
 export default function Landing() {
   const location = useLocation();
-
-  // Verificar si la ruta actual es "/home"
   const isHomeRoute = location.pathname === "/home";
-
   return (
     <div className={styles.body}>
       {!isHomeRoute && (

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styles from "./Home.module.css";
 import CardsContainer from "../../components/CardsContainer/CardsContainer";
 import SearchBar from "../../components/SearchBar/SearchBar";
+import Paginated from "../../components/Paginated/Paginated";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getVideogames, getVideogamesByName, filterByGenre, getGenres, filterByOrigin, orderVideogames } from "../../redux/actions/actions";
@@ -12,11 +13,13 @@ export default function Home() {
   const dispatch = useDispatch()
   const allVideogames = useSelector((state) => state.allVideogames);
   const allGenres = useSelector((state) => state.allGenres);
+  const videogames = useSelector((state) => state.videogames)
   
 
 
   const [searchString, setSearchString] = useState("");
   const [order, setOrder] = useState("1");
+  const [currentPage, setCurrentPage] = useState(1);
 
   function handleChange(e) {
     e.preventDefault()
@@ -32,6 +35,9 @@ export default function Home() {
     dispatch(getVideogames())
     dispatch(getGenres())
   }, [dispatch])
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [videogames]);
 
   const filterGenre = (e) => {
     const selectedGenre = e.target.value;
@@ -47,6 +53,9 @@ export default function Home() {
     const { value } = e.target;
     dispatch(orderVideogames(value));
     setOrder(value);
+  };
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
   };
 
   return (
@@ -80,8 +89,22 @@ export default function Home() {
       </div>
       <div className={styles.components}>
 
-        <SearchBar handleChange={handleChange} handleSubmit={handleSubmit} />
-        <CardsContainer allVideogames={allVideogames} />
+        <SearchBar 
+        handleChange={handleChange}
+        handleSubmit={handleSubmit}
+        />
+        <Paginated
+            videogamesPerPage={15} 
+            videogames={allVideogames?.length || 0} 
+            currentPage={currentPage}
+            pagination={handlePageChange}
+          />
+        <CardsContainer 
+        allVideogames={allVideogames}
+        currentPage={currentPage}
+        />
+      <div className={styles.paginatedBody}>
+      </div>
       </div>
     </div>
   );

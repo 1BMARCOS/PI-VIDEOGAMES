@@ -1,8 +1,4 @@
-
 import styles from '../SearchBar/SearchBar.module.css'
-
-
-
 
 function SearchBar({ handleChange, handleSubmit }) {
   return (
@@ -10,12 +6,8 @@ function SearchBar({ handleChange, handleSubmit }) {
       <form className={styles.form} onChange={handleChange}>
         <input className={styles.input} placeholder='Buscar' type='search' />
         <button className={styles.button} type='submit' onClick={handleSubmit}>Buscar</button>
-
       </form>
-
     </div>
   )
-
 }
-
 export default SearchBar;

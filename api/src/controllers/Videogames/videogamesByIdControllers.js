@@ -10,7 +10,6 @@ const findById = async (id) => {
     const finalGenres = videogame.genres.map((genre) => {
       return genre.name
     })
-    // console.log(finalGenres);
     const gameFilter = {
       id: videogame.id,
       name: videogame.name,
